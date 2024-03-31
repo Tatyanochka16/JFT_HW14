@@ -14,6 +14,7 @@ public class ShopRepository {
      * но с добавлением нового элемента в конец
      */
     private Product[] addToArray(Product[] current, Product product) {
+
         Product[] tmp = new Product[current.length + 1];
         for (int i = 0; i < current.length; i++) {
             tmp[i] = current[i];
@@ -28,7 +29,7 @@ public class ShopRepository {
      * @param product — добавляемый товар
      */
     public void add(Product product) {
-        products = addToArray(products, product);
+       products = addToArray(products, product);
     }
 
     public Product[] findAll() {
@@ -57,7 +58,7 @@ public class ShopRepository {
         return null;
     }
 
-    public Product[] removeById(int id) {
+    public void removeById(int id) {
         if (findById(id) == null) {
             throw new NotFoundException(
                     "Element with id: " + id + " not found"
@@ -72,7 +73,7 @@ public class ShopRepository {
             }
             products = tmp;
         }
-        return tmp;
+
     }
 
 }
